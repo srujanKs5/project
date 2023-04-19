@@ -14,10 +14,7 @@ resource "aws_key_pair" "auth" {
   tags = {
     Name = "auth-key"
   }
-  provisioner "file" {
-    content     = "aws_key_pair.auth.public_key"
-    destination = "/root/keys"
-  }
+  
 }
 
 
