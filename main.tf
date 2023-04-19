@@ -16,7 +16,7 @@ resource "aws_key_pair" "auth" {
   }
   provisioner "file" {
     content     = "aws_key_pair.auth.public_key"
-    destination = "E:\Desktop\IT\AWS\keys"
+    destination = "/root/keys"
   }
 }
 
