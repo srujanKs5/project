@@ -3,21 +3,6 @@ provider "aws" {
 }
 
 
-resource "tls_private_key" "tlsauth" {
-  algorithm = "RSA"
-  rsa_bits  = 4096
-}
-
-resource "aws_key_pair" "auth" {
-  key_name   = "auth-key"
-  public_key = "tls_private_key.tlsauth.public_key_openssh"
-  tags = {
-    Name = "auth-key"
-  }
-  
-}
-
-
 #1  Creating vpc 
 
 resource "aws_vpc" "first-vpc" {
@@ -158,7 +143,7 @@ resource "aws_instance" "apache2-first" {
    ami           = "ami-016eb5d644c333ccbf"
     instance_type = "t2.micro"
     availability_zone = "us-east-1a"
-    key_name = "auth-key"
+    key_name = "project"
     
     
     network_interface {
