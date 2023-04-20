@@ -1,0 +1,31 @@
+pipeline {
+    agent any
+    tools {
+        terraform 'terraform-1'
+    }
+    
+    stages{
+        stage('Git checkout'){
+            steps{
+                git branch: 'jenkins-iac-ec2', credentialsId: 'git credentials', url: 'https://github.com/srujanKs5/project.git'
+            }
+        }
+    
+    
+    
+        stage('terraform init'){
+            steps{
+                sh 'terraform init'
+            }
+        }
+        
+   
+        stage('terraform apply'){
+            steps{
+                sh 'terraform apply --auto-approve'
+            }
+        }
+    
+    }
+
+}
