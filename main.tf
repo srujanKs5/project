@@ -3,21 +3,6 @@ provider "aws" {
 }
 
 
-
-resource "aws_key_pair" "tf-key-pair" {
-key_name = "tf-key-pair"
-public_key = tls_private_key.rsa.public_key_openssh
-}
-resource "tls_private_key" "rsa" {
-algorithm = "RSA"
-rsa_bits  = 4096
-}
-resource "local_file" "tf-key" {
-content  = tls_private_key.rsa.private_key_pem
-filename = "tf-key-pair"
-}
-
-
 #1  Creating vpc 
 
 resource "aws_vpc" "first-vpc" {
@@ -158,7 +143,7 @@ resource "aws_instance" "rhel" {
    ami           = "ami-016eb5d644c333ccb"
     instance_type = "t2.micro"
     availability_zone = "us-east-1a"
-    key_name = "tf-key-pair"
+    key_name = "project"
     
     
     network_interface {
