@@ -4,7 +4,7 @@ provider "aws" {
   
 }
 
-#Create a new EC2 launch configuration
+#Create a new EC2 launch configuration 
 resource "aws_instance" "ec2_public" {
   ami                         = var.ami_id
   instance_type               = var.instance_type
@@ -18,7 +18,7 @@ resource "aws_instance" "ec2_public" {
     create_before_destroy = true
   }
   tags = {
-    "Name" = "EC2-PUBLIC"
+    "Name" = "EC2-public"
   }
   
  
@@ -37,7 +37,7 @@ resource "aws_instance" "ec2_private" {
     create_before_destroy = true
   }
   tags = {
-    "Name" = "EC2-PRIVATE"
+    "Name" = "EC2-private"
   }
  
 }
