@@ -11,10 +11,5 @@ resource "aws_instance" "apache2-first" {
     availability_zone = "us-east-1a"
     key_name = "project"
     
-    
-    network_interface {
-      device_index = 0
-      network_interface_id = aws_network_interface.web-sever-nic.id
-    }
-
+   
 }
